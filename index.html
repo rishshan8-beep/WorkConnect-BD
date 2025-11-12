@@ -20,23 +20,61 @@
 
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#home">WorkConnect BD</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navmenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
-            <li class="nav-item"><a class="nav-link" href="#jobs">Jobs</a></li>
-            <li class="nav-item"><a class="nav-link" href="#apply">Apply</a></li>
+     <!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">WorkConnect BD</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navmenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="#jobs">Jobs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#apply">Apply</a></li>
+
+        <!-- 🌐 Language Dropdown -->
+        <li class="nav-item dropdown ms-3">
+          <button
+            class="btn btn-outline-light dropdown-toggle d-flex align-items-center"
+            id="langDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-globe2 me-1"></i>
+            <span id="currentLang">EN</span>
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="langDropdown"
+          >
+            <li>
+              <a
+                class="dropdown-item lang-option active"
+                data-lang="en"
+                href="#"
+                >🇬🇧 English</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item lang-option" data-lang="bn" href="#"
+                >🇧🇩 বাংলা</a
+              >
+            </li>
           </ul>
-        </div>
-      </div>
-    </nav>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
     <!-- Hero -->
     <section id="home" class="d-flex align-items-center">
@@ -326,80 +364,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll(".navbar .nav-link");
-      const navbar = document.querySelector(".navbar");
 
-      // Smooth scroll
-      navLinks.forEach(link => {
-        link.addEventListener("click", function (e) {
-          if (this.hash) {
-            e.preventDefault();
-            const target = document.querySelector(this.hash);
-            const offset = navbar.offsetHeight - 10;
-            window.scrollTo({
-              top: target.offsetTop - offset,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
+        <script src="lang.js"></script>
 
-      // Scroll active link detection
-      window.addEventListener("scroll", () => {
-        const scrollY = window.pageYOffset;
-        const offset = navbar.offsetHeight + 120;
-        let currentSection = "";
 
-        sections.forEach(sec => {
-          const top = sec.offsetTop - offset;
-          const bottom = top + sec.offsetHeight;
-          if (scrollY >= top && scrollY < bottom) {
-            currentSection = sec.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach(link => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === "#" + currentSection) {
-            link.classList.add("active");
-          }
-        });
-
-        if (scrollY > 80) navbar.classList.add("scrolled");
-        else navbar.classList.remove("scrolled");
-      });
-    </script>
-
-    <script>
-      // Smooth scroll for Apply Now buttons inside modal
-      document.querySelectorAll(".apply-now-btn").forEach(btn => {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          const modal = bootstrap.Modal.getInstance(document.querySelector("#jobCategoryModal"));
-
-          if (modal) {
-            modal.hide();
-
-            const observer = new MutationObserver(() => {
-              if (!document.querySelector(".modal.show")) {
-                observer.disconnect();
-                if (target) {
-                  const offset = target.offsetTop - 70;
-                  window.scrollTo({
-                    top: offset,
-                    behavior: "smooth",
-                  });
-                }
-              }
-            });
-
-            observer.observe(document.body, { attributes: true, subtree: true });
-          }
-        });
-      });
-    </script>
+    
   </body>
 </html>

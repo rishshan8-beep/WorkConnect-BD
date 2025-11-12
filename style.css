@@ -524,3 +524,29 @@ footer {
     padding: 2rem;
   }
 }
+
+/* 🌐 Language Dropdown Styles */
+#langDropdown {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+#langDropdown:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu .lang-option.active {
+  background-color: #e8f9f1;
+  color: var(--primary-color) !important;
+  font-weight: 600;
+}
+
+.dropdown-menu .lang-option:hover {
+  background-color: #f2fff9;
+}
+
