@@ -550,3 +550,13 @@ footer {
   background-color: #f2fff9;
 }
 
+
+.apply-now-btn {
+  text-decoration: none !important;
+  color: #fff !important;
+  background-color: var(--primary-color);
+  border: none;
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
