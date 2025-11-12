@@ -254,6 +254,24 @@ function setLanguage(lang) {
     navLinks[4].textContent = t.nav_apply;
   }
 
+  // Navbar toggler "X" animation
+document.addEventListener("DOMContentLoaded", () => {
+  const toggler = document.querySelector(".navbar-toggler");
+  const navCollapse = document.querySelector("#navmenu");
+
+  if (toggler && navCollapse) {
+    toggler.addEventListener("click", () => {
+      toggler.classList.toggle("active");
+    });
+
+    // Close icon reset when menu hides (Bootstrap collapse event)
+    navCollapse.addEventListener("hidden.bs.collapse", () => {
+      toggler.classList.remove("active");
+    });
+  }
+});
+
+
   // Hero
   const homeH1 = document.querySelector('#home h1');
   const homeP = document.querySelector('#home p');
